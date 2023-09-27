@@ -1,0 +1,72 @@
+<div
+  class="min-w-fith-screen border-sky-300 border-2 rounded-xl p-2 flex flex-col justify-between"
+>
+  <div>
+    <div class="flex gap-2 mb-2">
+      <div
+        class="h-20 border-2 border-sky-300 w-full rounded-xl drop-shadow-md"
+      >
+        <div>Rating</div>
+        <div>
+          {{ currentGame?.rating }}
+        </div>
+      </div>
+      <div
+        class="h-20 border-2 border-sky-300 w-full rounded-xl drop-shadow-md"
+      >
+        <div>Rating Top</div>
+        <div>
+          {{ currentGame?.rating_top }}
+        </div>
+      </div>
+      <div
+        class="h-20 border-2 border-sky-300 w-full rounded-xl drop-shadow-md"
+      >
+        <div>ESRB</div>
+        <div>
+          {{ currentGame?.esrb_rating?.name }}
+        </div>
+      </div>
+      <div
+        class="h-20 border-2 border-sky-300 w-full rounded-xl drop-shadow-md"
+      >
+        <div>Metacritic</div>
+        <div>
+          {{ currentGame?.metacritic }}
+        </div>
+      </div>
+    </div>
+    <div class="relative w-full">
+      <img
+        class="rounded-xl drop-shadow-md"
+        src="{{ currentGame?.background_image }}"
+      />
+      <div
+        class="left-0 px-8 bottom-0 m-4 absolute bg-white text-center rounded-full text-xl line-clamp-1 drop-shadow-lg border-sky-300 border-2 text-slate-800"
+      >
+        {{ currentGame?.name }}
+      </div>
+    </div>
+    <div class="my-4">
+      <div>Genres:</div>
+      <div class="flex flex-wrap gap-2">
+        <span
+          *ngFor="let genre of currentGame?.genres"
+          class="border border-sky-300 p-2 text-xs font-thin rounded-full text-sky-600"
+          >{{ genre?.name | uppercase }}</span
+        >
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div>Tags:</div>
+    <div class="flex flex-wrap gap-2">
+      <div
+        class="border border-black-200 p-2 text-xs font-thin rounded-full"
+        *ngFor="let tag of currentGame?.tags"
+      >
+        {{ tag.name | uppercase }}
+      </div>
+    </div>
+  </div>
+</div>

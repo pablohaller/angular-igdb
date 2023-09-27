@@ -1,0 +1,21 @@
+<div class="p-4">
+  <input
+    type="search"
+    [(ngModel)]="searchTerm"
+    placeholder="xd"
+    (ngModelChange)="onSearchTermChange($event)"
+    (keydown)="onEnter($event)"
+  />
+  <app-game-information
+    *ngIf="currentGame?.id"
+    [currentGame]="currentGame"
+  ></app-game-information>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="!loading" class="grid grid-cols-2 gap-2">
+    <app-game-card
+      *ngFor="let game of games.results"
+      [game]="game"
+      (click)="setCurrentGame(game)"
+    ></app-game-card>
+  </div>
+</div>

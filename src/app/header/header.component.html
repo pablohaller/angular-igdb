@@ -1,0 +1,23 @@
+<header class="bg-sky-400 h-[10vh] w-screen p-4 flex items-center relative">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    class="h-10 w-10 cursor-pointer"
+    (click)="handleNavbarOpen()"
+  >
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 17h14M5 12h14M5 7h14"
+    />
+  </svg>
+  <app-navigation
+    *ngIf="navbarOpen"
+    (onClick)="handleNavbarOpen()"
+  ></app-navigation>
+</header>
