@@ -11,13 +11,18 @@ export class GamesListComponent {
   games: Root | any = {}
   currentGame: Result | any = {}
   loading = true
-  searchTerm: string = 'el search'
+  searchTerm: string = ''
+  page: number = 1;
+  total: number = 0;
 
   constructor(private _games: GamesService) { }
   ngOnInit() {
-    this._games.getData().subscribe(res => {
-      this.games = res;
+    this._games.getData(this.page).subscribe(res => {
       console.log('res', res)
+      this.games = res;
+      this.total = Math.round(this.games?.count);
+      console.log('total', this.total / 20)
+      this.page = 1
       this.loading = false
     })
   }
@@ -28,7 +33,9 @@ export class GamesListComponent {
   }
 
   clearCurrentGame() {
-    this.currentGame = {};
+    this.currentGame = {
+      id: -1,
+    };
   }
 
   onSearchTermChange(event: any) {
@@ -38,9 +45,29 @@ export class GamesListComponent {
   onEnter(event: any) {
     if (event.key === "Enter") {
       this.loading = true
-      this._games.getFilteredData(this.searchTerm).subscribe(res => {
+      this._games.getFilteredData(this.searchTerm, this.page).subscribe(res => {
         this.games = res;
+        this.total = Math.round(this.games?.count);
+        this.page = 1
         console.log('res', res)
+        this.loading = false
+      })
+    }
+  }
+
+  getPage(page: number) {
+    this.loading = true;
+    console.log('dadasdasdasdasd', page)
+    if (this.searchTerm.trim()) {
+      this._games.getFilteredData(this.searchTerm, page).subscribe(res => {
+        this.games = res;
+        this.page = page;
+        this.loading = false
+      })
+    } else {
+      this._games.getData(page).subscribe(res => {
+        this.games = res;
+        this.page = page;
         this.loading = false
       })
     }

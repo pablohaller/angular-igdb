@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { GameCardComponent } from './game-card/game-card.component';
 import { GameInformationComponent } from './game-information/game-information.component';
 import { GameSearchComponent } from './game-search/game-search.component'
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +20,15 @@ import { GameSearchComponent } from './game-search/game-search.component'
     GamesListComponent,
     GameCardComponent,
     GameInformationComponent,
-    GameSearchComponent
+    GameSearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

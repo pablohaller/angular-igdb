@@ -1,5 +1,7 @@
-<nav class="absolute top-0 left-0 h-screen w-1/2 bg-sky-200 z-10">
-  <div class="h-[10vh] p-4 flex items-center">
+<nav
+  class="absolute md:static top-0 left-0 h-full w-1/2 md:w-40 bg-sky-200 z-10"
+>
+  <div class="h-[10vh] p-4 flex items-center md:hidden">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -17,5 +19,8 @@
         d="m18 18l-6-6m0 0L6 6m6 6l6-6m-6 6l-6 6"
       />
     </svg>
+  </div>
+  <div class="p-6 text-xl">
+    <a class="hover:underline hover:text-gray-600" href="/">Home</a>
   </div>
 </nav>

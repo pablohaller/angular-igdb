@@ -8,4 +8,5 @@ import { Result } from 'src/contract';
 })
 export class GameInformationComponent {
   @Input() currentGame: Result | null = null;
+  @Input() onClose: (() => void) | null = null;
 }

@@ -1,7 +1,9 @@
 <div
-  class="min-w-fith-screen border-sky-300 border-2 rounded-xl p-2 flex flex-col justify-between"
+  class="min-w-screen bg-white drop-shadow-2xl border-sky-300 border-2 rounded-xl p-2 flex flex-col md:flex-row justify-between gap-2"
 >
+  <div class="md:hidden" (click)="onClose?.()">Close</div>
   <div>
+    <div class="hidden md:block" (click)="onClose?.()">Close</div>
     <div class="flex gap-2 mb-2">
       <div
         class="h-20 border-2 border-sky-300 w-full rounded-xl drop-shadow-md"
